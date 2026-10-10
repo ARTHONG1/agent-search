@@ -39,6 +39,7 @@ def main():
         executable.write_bytes(binary)
         executable.chmod(0o700)
         subprocess.run([str(executable), 'dir', str(repo), '--redact=100', '--max-archive-depth=2', '--no-banner'], check=True, timeout=120)
+        subprocess.run([str(executable), 'git', str(repo), '--redact=100', '--no-banner'], check=True, timeout=120)
 
 
 if __name__ == '__main__':

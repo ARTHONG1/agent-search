@@ -1,0 +1,51 @@
+{
+  "schema": "github-actions-verification",
+  "date": "2026-10-10",
+  "run_url": "https://github.com/ARTHONG1/agent-search/actions/runs/38018219698",
+  "tested_code_commit": "a25d3a36a8e2728ab90e187cbb8de7760b5e930a",
+  "conclusion": "success",
+  "platforms": [
+    {
+      "runner": "macos-15",
+      "python": "3.12",
+      "tests_passed": 145,
+      "clean_install_mcp_and_rollback": "passed",
+      "result": "success",
+      "job_url": "https://github.com/ARTHONG1/agent-search/actions/runs/38018219698/job/114113220014"
+    },
+    {
+      "runner": "macos-15-intel",
+      "python": "3.12",
+      "tests_passed": 145,
+      "clean_install_mcp_and_rollback": "passed",
+      "result": "success",
+      "job_url": "https://github.com/ARTHONG1/agent-search/actions/runs/38018219698/job/114113220056"
+    },
+    {
+      "runner": "windows-2022",
+      "python": "3.12",
+      "tests_passed": 145,
+      "clean_install_mcp_and_rollback": "passed",
+      "result": "success",
+      "job_url": "https://github.com/ARTHONG1/agent-search/actions/runs/38018219698/job/114113220081"
+    }
+  ],
+  "checks": [
+    "Publication allowlist and pinned Gitleaks scan",
+    "Python dependency consistency",
+    "Ruff",
+    "145 extension tests on each platform",
+    "Fresh Python/Node installation in a Korean and space-containing path",
+    "Real stdio MCP handshake, nine tools, local URL rejection",
+    "Scoped rollback and preservation of unrelated MCP settings"
+  ],
+  "not_exercised": [
+    "Homebrew installation on a personal MacBook",
+    "Live external web search/read in CI",
+    "Logged-in SNS requests, browser extension setup or Tavily calls",
+    "Python 3.13 or unsupported older macOS"
+  ],
+  "historical_failed_run_url": "https://github.com/ARTHONG1/agent-search/actions/runs/38017775766",
+  "fix": "Canonicalize the install root with Path.resolve() before creating venv and npm prefix; macOS /var is an alias of /private/var.",
+  "note": "Documentation and this verification receipt are added after the tested code commit; historical local verification JSON remains unchanged."
+}

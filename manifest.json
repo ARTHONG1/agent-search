@@ -8,5 +8,6 @@
   "policy": "Boss omitted from default doctor; explicit cookies only; Exa default; Tavily opt-in",
   "supported_python": "3.12 (recommended), 3.13",
   "required_node": ">=24",
-  "macos_runtime_verified": false
+  "macos_runtime_verified": true,
+  "runtime_verification_record": "github-actions-verification.json"
 }

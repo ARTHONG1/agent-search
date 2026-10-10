@@ -70,7 +70,9 @@ py -3.12 "$env:USERPROFILE/.agent-reach/tools/agent-reach-plus/diagnose.py" --li
 
 ## 검증과 개발
 
-로컬 Windows/Python 3.12에서 확장 테스트 144개, 새 설치·복구·MCP 연결·공개 검색/읽기를 확인했습니다. 기록은 [portability-verification.json](portability-verification.json)에 있습니다. 로컬에서 실제 macOS를 실행한 검증은 없으며, GitHub Actions는 Windows와 macOS ARM/Intel에서 전체 테스트 및 설치·MCP·복구를 실행하도록 구성했습니다. 실제 실행 결과는 상단 Checks 링크에서 확인하세요.
+로컬 Windows/Python 3.12에서 확장 테스트 145개가 통과했습니다. GitHub Actions의 실제 macOS 15 ARM/Intel 및 Windows 2022 환경에서도 각각 145개 테스트와 한글·공백 경로의 새 설치, MCP 연결, 설정 보존 및 복구를 확인했습니다. macOS의 `/var`와 `/private/var` 경로 차이로 발생하던 npm 설치 오류를 수정하고 재검증했습니다.
+
+플랫폼별 실행 증거와 범위는 [github-actions-verification.json](github-actions-verification.json)과 상단 Checks 링크에 있습니다. [portability-verification.json](portability-verification.json)은 공개 전 Windows에서 수행한 검색/읽기와 이전 호환성 검사 기록입니다. GitHub Actions 설치 검사는 외부 검색 호출이나 SNS 로그인을 포함하지 않습니다. 새 기기에서 설치 후 `diagnose.py --live`로 네트워크와 계정 상태를 확인하세요.
 
 Python 의존성 파일은 직접 의존성과 플랫폼별 버전을 고정합니다. 모든 전이 의존성을 고정한 전체 lock은 아닙니다. `requirements.windows-reference.txt`는 이전 Windows 환경 참고용이며 설치에 사용하지 않습니다. Node는 `package-lock.json`으로 설치합니다.
 
