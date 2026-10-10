@@ -1,5 +1,8 @@
 import importlib.util
 import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 from unittest.mock import patch
 
@@ -44,3 +47,24 @@ def test_bad_bundle_does_not_mutate_active_install(tmp_path):
     assert config.read_text() == 'existing-config'
     assert (root / 'manifest.json').read_text() == 'existing-runtime'
     assert not (root / 'releases').exists()
+
+
+def test_install_root_uses_physical_path_for_npm_prefix(tmp_path):
+    module = installer()
+    physical = tmp_path / 'physical'
+    physical.mkdir()
+    alias = tmp_path / 'alias'
+    if os.name == 'nt':
+        subprocess.run(['cmd', '/c', 'mklink', '/J', str(alias), str(physical)], check=True, capture_output=True)
+    else:
+        alias.symlink_to(physical, target_is_directory=True)
+    selected = []
+    # Avoid package downloads while observing the path used by the real CLI.
+    def install(root, config, skill, node, gh):
+        selected.append(root)
+        root.mkdir(parents=True)
+        (root / 'marker.txt').write_text('staged')
+    with patch.object(sys, 'argv', ['install.py', '--root', str(alias / 'new'), '--node', sys.executable]), patch.object(module, 'install', side_effect=install):
+        module.main()
+    assert selected == [physical.resolve() / 'new']
+    assert (physical / 'new/marker.txt').read_text() == 'staged'

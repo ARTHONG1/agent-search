@@ -113,7 +113,8 @@ def main():
     node = executable('node', args.node)
     if not node:
         raise RuntimeError('Install Node.js 24 with npm, then rerun')
-    install(args.root.expanduser().absolute(), args.config.expanduser().absolute(), args.skill.expanduser().absolute(), node, executable('gh', args.gh))
+    # npm and venv must agree on the physical prefix (macOS /var -> /private/var).
+    install(args.root.expanduser().resolve(), args.config.expanduser().absolute(), args.skill.expanduser().absolute(), node, executable('gh', args.gh))
 
 
 if __name__ == '__main__':
