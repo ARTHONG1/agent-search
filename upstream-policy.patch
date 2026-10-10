@@ -1,0 +1,18 @@
+--- a/agent_reach/channels/__init__.py
++++ b/agent_reach/channels/__init__.py
+@@ -8,7 +8,6 @@
+ # Import all channels
+ from .base import Channel
+ from .bilibili import BilibiliChannel
+-from .boss import BossChannel
+ from .exa_search import ExaSearchChannel
+ from .facebook import FacebookChannel
+ from .github import GitHubChannel
+@@ -34,7 +33,6 @@
+     BilibiliChannel(),
+     XiaoHongShuChannel(),
+     LinkedInChannel(),
+-    BossChannel(),
+     XiaoyuzhouChannel(),
+     V2EXChannel(),
+     XueqiuChannel(),

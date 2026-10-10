@@ -1,0 +1,12 @@
+{
+  "schema": "portable-source",
+  "extension_version": "0.2.0",
+  "upstream_commit": "a19a171fa980a0785849596492e0af4db800c82f",
+  "upstream_url": "https://github.com/Panniantong/Agent-Reach",
+  "upstream_wheel": "vendor/agent_reach-1.5.0-py3-none-any.whl",
+  "upstream_wheel_sha256": "11088f39ca4fbe17caa924c2f8b0cbafd7d29161cd9c4076874d5ebb03959588",
+  "policy": "Boss omitted from default doctor; explicit cookies only; Exa default; Tavily opt-in",
+  "supported_python": "3.12 (recommended), 3.13",
+  "required_node": ">=24",
+  "macos_runtime_verified": false
+}

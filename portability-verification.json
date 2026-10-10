@@ -1,0 +1,230 @@
+{
+  "timestamp": "2026-10-10T02:28:52.180179+00:00",
+  "extension_version": "0.2.0",
+  "upstream_commit": "a19a171fa980a0785849596492e0af4db800c82f",
+  "tests": {
+    "passed": 144,
+    "failed": 0,
+    "ruff": "passed"
+  },
+  "windows_fresh_install": {
+    "non_ascii_and_space_path": true,
+    "mcp_handshake": true,
+    "pip_check": "passed",
+    "live": {
+      "os": "Windows",
+      "architecture": "AMD64",
+      "python": "3.12.10",
+      "cryptography": "50.0.2",
+      "checks": [
+        {
+          "case": "mcp_tools",
+          "passed": true
+        },
+        {
+          "case": "reject_private_url",
+          "passed": true
+        },
+        {
+          "case": "configuration_diagnosis",
+          "passed": true,
+          "backends": {
+            "gh": {
+              "installed": true
+            },
+            "yt-dlp": {
+              "installed": true
+            },
+            "bili": {
+              "installed": true
+            },
+            "twitter": {
+              "installed": true
+            },
+            "opencli": {
+              "installed": true
+            },
+            "mcporter": {
+              "installed": true
+            },
+            "rdt": {
+              "installed": false
+            }
+          }
+        },
+        {
+          "case": "web_read",
+          "passed": true,
+          "error_code": null
+        },
+        {
+          "case": "web_search",
+          "passed": true,
+          "error_code": null
+        },
+        {
+          "case": "rss",
+          "passed": true,
+          "error_code": null
+        }
+      ],
+      "tools": [
+        "agent_reach_code_search",
+        "agent_reach_fetch_url",
+        "agent_reach_rss_read",
+        "agent_reach_social_read",
+        "agent_reach_social_search",
+        "agent_reach_v2ex_topics",
+        "agent_reach_web_search",
+        "agent_reach_youtube_subtitles",
+        "get_status"
+      ],
+      "passed": true
+    },
+    "actual_fresh_rollback": "passed"
+  },
+  "current_pc_upgrade": {
+    "mcp_registered_after_handshake": true,
+    "unrelated_config_preserved": true,
+    "original_global_core_unchanged": true,
+    "installed_deployment_source_matches": true,
+    "boss_excluded": true,
+    "pip_check": "passed",
+    "restricted_path_live": {
+      "os": "Windows",
+      "architecture": "AMD64",
+      "python": "3.12.10",
+      "cryptography": "50.0.2",
+      "checks": [
+        {
+          "case": "mcp_tools",
+          "passed": true
+        },
+        {
+          "case": "reject_private_url",
+          "passed": true
+        },
+        {
+          "case": "web_read",
+          "passed": true,
+          "error_code": null
+        },
+        {
+          "case": "web_search",
+          "passed": true,
+          "error_code": null
+        },
+        {
+          "case": "rss",
+          "passed": true,
+          "error_code": null
+        }
+      ],
+      "tools": [
+        "agent_reach_code_search",
+        "agent_reach_fetch_url",
+        "agent_reach_rss_read",
+        "agent_reach_social_read",
+        "agent_reach_social_search",
+        "agent_reach_v2ex_topics",
+        "agent_reach_web_search",
+        "agent_reach_youtube_subtitles",
+        "get_status"
+      ],
+      "passed": true
+    },
+    "initial_live_attempt": {
+      "os": "Windows",
+      "architecture": "AMD64",
+      "python": "3.12.10",
+      "cryptography": "50.0.2",
+      "checks": [
+        {
+          "case": "mcp_tools",
+          "passed": true
+        },
+        {
+          "case": "reject_private_url",
+          "passed": true
+        },
+        {
+          "case": "web_read",
+          "passed": true,
+          "error_code": null
+        },
+        {
+          "case": "web_search",
+          "passed": true,
+          "error_code": null
+        },
+        {
+          "case": "rss",
+          "passed": false,
+          "error_code": "http_error"
+        }
+      ],
+      "tools": [
+        "agent_reach_code_search",
+        "agent_reach_fetch_url",
+        "agent_reach_rss_read",
+        "agent_reach_social_read",
+        "agent_reach_social_search",
+        "agent_reach_v2ex_topics",
+        "agent_reach_web_search",
+        "agent_reach_youtube_subtitles",
+        "get_status"
+      ],
+      "passed": false
+    },
+    "rss_recheck": [
+      {
+        "url": "https://hnrss.org/frontpage",
+        "ok": true,
+        "result_type": "dict"
+      },
+      {
+        "url": "https://news.ycombinator.com/rss",
+        "ok": true,
+        "result_type": "dict"
+      },
+      {
+        "url": "https://github.com/python/cpython/releases.atom",
+        "ok": true,
+        "result_type": "dict"
+      }
+    ]
+  },
+  "macos": {
+    "runtime_execution_verified": false,
+    "native_wheel_downloads": {
+      "arm64": [
+        "cffi-2.1.1-cp312-cp312-macosx_11_0_arm64.whl",
+        "cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl",
+        "curl_cffi-0.16.3-cp310-abi3-macosx_11_0_arm64.whl",
+        "lxml-6.1.3-cp312-cp312-macosx_10_13_universal2.whl",
+        "pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl",
+        "pydantic_core-2.46.5-cp312-cp312-macosx_11_0_arm64.whl",
+        "rpds_py-2026.9.1-cp312-cp312-macosx_11_0_arm64.whl"
+      ],
+      "x86_64": [
+        "cffi-2.1.1-cp312-cp312-macosx_10_15_x86_64.whl",
+        "cryptography-48.0.1-cp311-abi3-macosx_10_9_universal2.whl",
+        "curl_cffi-0.16.3-cp310-abi3-macosx_10_9_x86_64.whl",
+        "lxml-6.1.3-cp312-cp312-macosx_10_13_x86_64.whl",
+        "pillow-12.3.0-cp312-cp312-macosx_10_13_x86_64.whl",
+        "pydantic_core-2.46.5-cp312-cp312-macosx_10_12_x86_64.whl",
+        "rpds_py-2026.9.1-cp312-cp312-macosx_10_12_x86_64.whl"
+      ]
+    },
+    "python_used_for_wheel_tags": "3.12",
+    "posix_process_group_test": "mocked OS/system calls on Windows; not macOS execution",
+    "intel_cryptography": "48.0.1; upstream removed Intel macOS support in 49"
+  },
+  "not_verified": [
+    "macOS actual installation/runtime",
+    "Python 3.13 actual installation",
+    "logged-in SNS read/search",
+    "Tavily metered calls"
+  ],
+  "dependency_lock_scope": "Direct Python dependencies pinned; transitives resolved per OS. npm ci uses complete lock."
+}

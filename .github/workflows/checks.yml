@@ -1,0 +1,71 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.py'
+      - '**.toml'
+      - 'requirements*.txt'
+      - 'manifest.json'
+      - 'vendor/**'
+      - 'node-tools/**'
+      - '.github/workflows/**'
+      - '.gitignore'
+      - '.gitattributes'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    name: Publication and secret scan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - run: python scripts/check_publication.py
+      - run: python scripts/gitleaks_scan.py
+
+  platforms:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    needs: secrets
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, macos-15, macos-15-intel]
+        python: ['3.12']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      AGENT_REACH_PLUS_HOME: ${{ github.workspace }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Install pinned dependencies and public upstream wheel
+        run: python -m pip install --only-binary=cryptography -r requirements.lock.txt vendor/agent_reach-1.5.0-py3-none-any.whl ".[social]" pytest==9.1.1 ruff==0.16.10
+      - run: npm ci --prefix node-tools --omit=dev --ignore-scripts --no-audit --no-fund
+      - run: python -m pip check
+      - run: python -m ruff check agent_reach_plus tests install.py diagnose.py rollback.py scripts
+      - run: python -m pytest -q
+      - name: Clean install, real MCP handshake and rollback
+        run: python scripts/ci_install_smoke.py

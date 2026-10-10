@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-10-05T09:49:46.707565+00:00",
+  "upstream_commit": "a19a171fa980a0785849596492e0af4db800c82f",
+  "tests": [
+    {
+      "case": "code_search",
+      "tool": "agent_reach_code_search",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": "Exa code context",
+      "result_chars": 1635
+    },
+    {
+      "case": "web_search",
+      "tool": "agent_reach_web_search",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": "Exa",
+      "result_chars": 7600
+    },
+    {
+      "case": "status",
+      "tool": "get_status",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": null,
+      "result_chars": 4196
+    },
+    {
+      "case": "v2ex",
+      "tool": "agent_reach_v2ex_topics",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": "V2EX public API",
+      "result_chars": 3999
+    },
+    {
+      "case": "web_read",
+      "tool": "agent_reach_fetch_url",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": "Jina Reader",
+      "result_chars": 1191
+    },
+    {
+      "case": "rss",
+      "tool": "agent_reach_rss_read",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": "feedparser",
+      "result_chars": 1640
+    },
+    {
+      "case": "github_read",
+      "tool": "agent_reach_social_read",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": "gh",
+      "result_chars": 6155
+    },
+    {
+      "case": "github_bilibili_search",
+      "tool": "agent_reach_social_search",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": null,
+      "platforms": [
+        {
+          "platform": "github",
+          "backend": "gh"
+        },
+        {
+          "platform": "bilibili",
+          "backend": "bili"
+        }
+      ],
+      "result_chars": 1083
+    },
+    {
+      "case": "youtube_search",
+      "tool": "agent_reach_social_search",
+      "ok": true,
+      "truncated": false,
+      "error": null,
+      "backend": null,
+      "platforms": [
+        {
+          "platform": "youtube",
+          "backend": "yt-dlp"
+        }
+      ],
+      "result_chars": 2921
+    },
+    {
+      "case": "reject_private_url",
+      "tool": "agent_reach_fetch_url",
+      "ok": false,
+      "truncated": null,
+      "error": {
+        "code": "invalid_url",
+        "message": "URL must resolve to a public internet address on port 80/443"
+      }
+    },
+    {
+      "case": "login_required",
+      "tool": "agent_reach_social_search",
+      "ok": false,
+      "truncated": null,
+      "error": {
+        "code": "all_platforms_failed",
+        "message": "Every requested platform failed or needs setup",
+        "platforms": [
+          {
+            "platform": "twitter",
+            "code": "setup_required",
+            "message": "twitter requires OpenCLI with a connected browser extension and an existing login"
+          },
+          {
+            "platform": "reddit",
+            "code": "setup_required",
+            "message": "reddit requires OpenCLI with a connected browser extension and an existing login"
+          }
+        ]
+      }
+    },
+    {
+      "case": "youtube_subtitles",
+      "tool": "agent_reach_youtube_subtitles",
+      "ok": true,
+      "truncated": true,
+      "error": null
+    }
+  ],
+  "tools": [
+    "get_status",
+    "agent_reach_web_search",
+    "agent_reach_code_search",
+    "agent_reach_fetch_url",
+    "agent_reach_youtube_subtitles",
+    "agent_reach_rss_read",
+    "agent_reach_social_search",
+    "agent_reach_social_read",
+    "agent_reach_v2ex_topics"
+  ]
+}

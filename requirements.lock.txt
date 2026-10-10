@@ -1,0 +1,13 @@
+# Tested direct dependency pins. Transitive/platform packages resolved on target OS.
+# Install together with the bundled patched upstream wheel and local source.
+mcp==1.30.0
+httpx==0.28.1
+feedparser==6.0.14
+tomlkit==0.15.1
+yt-dlp[default]==2026.8.19
+twitter-cli==0.8.5
+bilibili-cli==0.6.2
+pywin32==312; sys_platform == "win32"
+# cryptography >=49 dropped Intel macOS. Last compatible wheel for this build:
+cryptography==48.0.1; sys_platform == "darwin" and platform_machine == "x86_64"
+cryptography==50.0.2; sys_platform != "darwin" or platform_machine != "x86_64"

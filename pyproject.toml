@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-reach-plus"
+version = "0.2.0"
+description = "Read/search MCP extension for an existing Agent-Reach installation"
+requires-python = ">=3.12,<3.14"
+dependencies = ["mcp>=1.0,<2", "httpx>=0.28,<1", "feedparser>=6", "agent-reach==1.5.0", "tomlkit>=0.13,<1", "pywin32>=308; sys_platform == 'win32'"]
+
+[project.optional-dependencies]
+social = ["twitter-cli==0.8.5", "bilibili-cli==0.6.2"]
+
+[tool.setuptools.packages.find]
+include = ["agent_reach_plus*"]
+
+[project.scripts]
+agent-reach-plus = "agent_reach_plus.server:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
